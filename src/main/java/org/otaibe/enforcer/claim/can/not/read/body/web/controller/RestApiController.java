@@ -22,6 +22,7 @@ public class RestApiController {
     @Path("/auth-entry")
     @Produces(MediaType.TEXT_PLAIN)
     public String post(@Context HttpServletRequest request) {
+        log.info("will try to read body for the second time");
         try (ServletInputStream inputStream = request.getInputStream()) {
             String body = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
             if (StringUtils.isBlank(body)) {
